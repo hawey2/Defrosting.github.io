@@ -2,6 +2,7 @@
 title: "Poster hội nghị: AI hỗ trợ đọc CTG"
 order: 1
 year: 2026
+place: "Hội nghị Sản Phụ khoa, Hà Nội (mẫu)"
 role: Thiết kế & nội dung
 description: "Poster khổ A0 tóm tắt các hướng tiếp cận AI trong đọc băng ghi tim thai."
 cover: /assets/images/portfolio/poster-hoi-nghi.svg

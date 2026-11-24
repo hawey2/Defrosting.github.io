@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="{{ site.lang | default: 'vi' }}">
+<html lang="{{ site.lang | default: 'vi' }}" class="no-js">
 <head>
   {% include head.html %}
 </head>
 <body class="layout-{{ page.layout }}">
+  {% include svg-defs.html %}
   <a class="skip-link" href="#main">Bỏ qua tới nội dung</a>
-  <div class="frost" aria-hidden="true"></div>
   {% include header.html %}
   <main id="main">
     {{ content }}

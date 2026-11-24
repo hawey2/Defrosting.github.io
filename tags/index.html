@@ -2,19 +2,16 @@
 layout: page
 title: Chủ đề
 kicker: Theo thẻ
-lead: Các bài viết được nhóm theo chủ đề.
+seal: CHỦ ĐỀ
+wide: true
 ---
 {% assign tags = site.tags | sort %}
 <p class="tag-cloud">
-  {% for t in tags %}<a href="#{{ t[0] | slugify }}">#{{ t[0] }} <sup>{{ t[1].size }}</sup></a>{% endfor %}
+  {% for t in tags %}<a href="#{{ t[0] | slugify }}">{{ t[0] }} <sup>{{ t[1].size }}</sup></a>{% endfor %}
 </p>
 {% for t in tags %}
-<section class="archive-year">
-  <h2 id="{{ t[0] | slugify }}">#{{ t[0] }}</h2>
-  <ul class="archive-list">
-    {% for post in t[1] %}
-    <li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d.%m.%Y' }}</time> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
-</section>
+<p class="year-label" id="{{ t[0] | slugify }}">{{ t[0] }}</p>
+<ul class="post-list">
+  {% for post in t[1] %}{% include post-row.html post=post %}{% endfor %}
+</ul>
 {% endfor %}

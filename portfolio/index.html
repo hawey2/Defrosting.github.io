@@ -1,15 +1,12 @@
 ---
 layout: page
-title: Portfolio
-kicker: Hình ảnh · Dự án · Minh hoạ
-lead: Những sơ đồ, poster và dự án mình đã làm — bấm vào từng ô để xem chi tiết.
+title: Dự án
+kicker: Hình ảnh · Minh hoạ · Nghiên cứu
+seal: DỰ ÁN
+lead: Poster, sơ đồ và minh hoạ — sắp theo năm, mới nhất trước.
+wide: true
 ---
-<div class="masonry masonry--page">
+<div class="entries">
   {% assign projects = site.portfolio | sort: 'order' %}
-  {% for item in projects %}
-  <a class="tile" href="{{ item.url | relative_url }}">
-    <img src="{{ item.cover | relative_url }}" alt="{{ item.title | escape }}" loading="lazy" decoding="async">
-    <span class="tile-caption"><strong>{{ item.title }}</strong>{% if item.year %}<span>{{ item.year }}</span>{% endif %}</span>
-  </a>
-  {% endfor %}
+  {% for item in projects %}{% include entry.html item=item %}{% endfor %}
 </div>

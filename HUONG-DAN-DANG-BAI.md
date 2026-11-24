@@ -104,12 +104,14 @@ Tạo file trong `_portfolio/`, ví dụ `_portfolio/poster-2027.md`:
 ---
 title: "Tên dự án"
 order: 1                 # số nhỏ hiện trước
-year: 2027
+year: 2027               # hiện to ở cột bên trái
+place: "Hà Nội"          # nơi trưng bày / bối cảnh (không bắt buộc)
 role: Thiết kế & nội dung
 description: "Một câu mô tả."
 cover: /assets/images/portfolio/poster-2027.jpg
 tools: [Figma, Python]
-gallery:                 # (không bắt buộc) lưới ảnh cuối trang
+gallery:                 # (không bắt buộc) 2 ảnh đầu hiện cạnh ảnh bìa ở trang Dự án;
+                         # toàn bộ hiện thành lưới ở cuối trang dự án
   - src: /assets/images/portfolio/poster-2027-detail.jpg
     caption: "Chi tiết"
 links:                   # (không bắt buộc)

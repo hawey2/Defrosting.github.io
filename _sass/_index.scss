@@ -1,0 +1,52 @@
+// ─── Danh mục dự án & bài viết (theo kiểu sổ triển lãm) ───────
+// Mỗi dự án: cột năm | tiêu đề, chất liệu, mô tả, dải ảnh.
+.entries { border-top: 1px solid var(--line); }
+.entry { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: var(--s8) clamp(24px, 4vw, 64px); padding: clamp(40px, 6vw, 80px) 0; border-bottom: 1px solid var(--line); }
+.entry-year { font: 300 clamp(1.8rem, 3vw, 2.6rem)/1 var(--serif); color: var(--muted); font-variant-numeric: oldstyle-nums; }
+.entry-year .seal { margin-top: var(--s4); font-size: 8px; }
+.entry-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s4) clamp(24px, 4vw, 64px); margin-bottom: clamp(24px, 3vw, 40px); }
+.entry-title { font-size: clamp(1.5rem, 2.6vw, 2.2rem); margin: 0; }
+.entry-title a { color: inherit; text-decoration: none; background: linear-gradient(var(--warm), var(--warm)) 0 100% / 0 1px no-repeat; transition: background-size .6s var(--ease); }
+.entry-title a:hover { background-size: 100% 1px; color: inherit; }
+.entry-meta { margin: var(--s3) 0 0; }
+.entry-meta span + span::before { content: "·"; margin: 0 .7em; color: var(--warm); }
+.entry-desc { margin: 0; color: var(--ink-2); font-size: 1rem; }
+.entry-desc .link-arrow { display: inline-block; margin-top: var(--s4); }
+@include tablet { .entry-head { grid-template-columns: 1fr; } }
+@include phone { .entry { grid-template-columns: 1fr; gap: var(--s4); } .entry-year { display: flex; align-items: center; gap: var(--s4); } .entry-year .seal { margin: 0; } }
+
+// Dải ảnh căn đều (justified): chiều cao bằng nhau, chiều rộng theo tỉ lệ ảnh
+.strip { display: flex; gap: clamp(8px, 1.2vw, 16px); align-items: stretch; }
+.strip > * { flex: 1 1 0; min-width: 0; margin: 0; }
+.strip .mount { height: 100%; }
+.strip img { height: clamp(180px, 22vw, 320px); width: 100%; object-fit: cover; }
+@include phone {
+  .strip { overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scrollbar-width: none; }
+  .strip > * { flex: 0 0 78%; scroll-snap-align: start; }
+}
+
+// Danh sách bài viết: dòng mảnh, ảnh nhỏ hiện khi rê chuột
+.post-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+.post-row { position: relative; border-bottom: 1px solid var(--line); }
+.post-row a { display: grid; grid-template-columns: 140px minmax(0, 1fr) auto; gap: var(--s6) clamp(24px, 4vw, 64px); align-items: baseline; padding: clamp(22px, 3vw, 34px) 0; color: var(--ink); text-decoration: none; }
+.post-row time { @include label; color: var(--muted); }
+.post-row h3 { margin: 0; font-size: clamp(1.25rem, 2vw, 1.6rem); transition: transform .5s var(--ease), color .3s; }
+.post-row p { margin: var(--s2) 0 0; color: var(--ink-2); font-size: .97rem; max-width: 60ch; }
+.post-row .label { white-space: nowrap; }
+.post-row a:hover h3 { transform: translateX(8px); color: var(--warm); }
+.post-thumb { position: absolute; right: 12%; top: 50%; width: 220px; pointer-events: none; opacity: 0; transform: translateY(-50%) rotate(2deg) scale(.96); transition: opacity .4s var(--ease), transform .6s var(--ease); z-index: 2; }
+.post-row a:hover + .post-thumb { opacity: 1; transform: translateY(-50%) rotate(-1deg) scale(1); }
+@media (hover: none), (max-width: 1040px) { .post-thumb { display: none; } }
+@include phone { .post-row a { grid-template-columns: 1fr; gap: var(--s2); } .post-row .label { display: none; } }
+
+// Trang lưu trữ
+.page { padding-top: clamp(48px, 8vw, 110px); }
+.page-header { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: var(--s6) clamp(24px, 4vw, 64px); margin-bottom: clamp(40px, 6vw, 80px); }
+.page-header > .seal { justify-self: start; align-self: start; margin-top: 14px; }
+.page-header h1 { margin-top: var(--s3); }
+@include phone { .page-header { grid-template-columns: 1fr; } }
+.year-label { font: 300 1.4rem var(--serif); color: var(--muted); margin: var(--s16) 0 0; padding-bottom: var(--s3); }
+.tag-cloud { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s6); margin: 0 0 var(--s12); }
+.tag-cloud a { @include label; color: var(--ink-2); text-decoration: none; }
+.tag-cloud a:hover { color: var(--warm); }
+.tag-cloud sup { color: var(--muted); }

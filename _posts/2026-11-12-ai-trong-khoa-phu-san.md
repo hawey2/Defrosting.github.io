@@ -2,8 +2,8 @@
 title: "AI trong khoa Phụ sản: từ màn hình siêu âm đến băng ghi tim thai"
 description: "Một bản đồ nhập môn về những nơi trí tuệ nhân tạo đang chạm vào thực hành sản phụ khoa — và vì sao bác sĩ vẫn là người ra quyết định."
 tags: [Phụ sản, Siêu âm, CTG, Nhập môn]
-cover: /assets/images/posts/ai-phu-san/cover.svg
-cover_caption: "Minh hoạ: một khung quạt siêu âm, khung gợi ý của mô hình AI và một đoạn băng ghi tim thai (CTG)."
+cover: /assets/images/posts/ai-phu-san/cover-silk.svg
+cover_caption: "Tranh lụa minh hoạ: hồ sen buổi sớm, khi sương đang tan."
 references:
   - "FIGO Safe Motherhood and Newborn Health Committee (2015). *FIGO consensus guidelines on intrapartum fetal monitoring.* International Journal of Gynecology & Obstetrics."
   - "World Health Organization (2021). *Ethics and governance of artificial intelligence for health.* Geneva: WHO."

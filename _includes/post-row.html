@@ -1,0 +1,12 @@
+{%- assign p = include.post -%}
+<li class="post-row reveal">
+  <a href="{{ p.url | relative_url }}">
+    <time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: '%d.%m.%Y' }}</time>
+    <div>
+      <h3>{{ p.title }}</h3>
+      <p>{{ p.description | default: p.excerpt | strip_html | truncatewords: 28 }}</p>
+    </div>
+    {% if p.tags.size > 0 %}<span class="label">{{ p.tags | first }}</span>{% endif %}
+  </a>
+  {% if p.cover %}<span class="post-thumb mount" aria-hidden="true"><img src="{{ p.cover | relative_url }}" alt="" loading="lazy" decoding="async"></span>{% endif %}
+</li>

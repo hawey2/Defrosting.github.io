@@ -22,6 +22,29 @@
     try { localStorage.setItem('theme', next); } catch (e) {}
   });
 
+  /* Hiện dần khi cuộn tới, như màu thấm dần vào lụa */
+  var reveals = $$('.reveal');
+  if ('IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); ro.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { ro.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* Dải ảnh căn đều: mỗi ảnh rộng theo đúng tỉ lệ của nó */
+  $$('.strip img').forEach(function (img) {
+    function fit() {
+      if (img.naturalWidth && img.naturalHeight) {
+        img.parentNode.style.flexGrow = (img.naturalWidth / img.naturalHeight).toFixed(3);
+      }
+    }
+    if (img.complete) fit(); else img.addEventListener('load', fit);
+  });
+
   var content = $('.post-content');
 
   /* Ảnh Markdown đứng một mình trong đoạn → <figure> có chú thích.
@@ -39,7 +62,10 @@
       fig.appendChild(img);
       if (text) {
         var cap = document.createElement('figcaption');
-        cap.textContent = text;
+        var span = document.createElement('span');
+        span.className = 'fig-text';
+        span.textContent = text;
+        cap.appendChild(span);
         fig.appendChild(cap);
       }
       p.parentNode.replaceChild(fig, p);

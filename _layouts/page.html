@@ -3,11 +3,14 @@ layout: default
 ---
 <article class="wrap page">
   <header class="page-header">
-    {% if page.kicker %}<p class="kicker">{{ page.kicker }}</p>{% endif %}
-    <h1>{{ page.title }}</h1>
-    {% if page.lead %}<p class="lead">{{ page.lead }}</p>{% endif %}
+    {% include seal.html text=page.seal %}
+    <div>
+      {% if page.kicker %}<p class="kicker">{{ page.kicker }}</p>{% endif %}
+      <h1>{{ page.title }}</h1>
+      {% if page.lead %}<p class="lead">{{ page.lead }}</p>{% endif %}
+    </div>
   </header>
-  <div class="prose">
+  <div class="{% if page.wide %}page-body{% else %}prose page-body--prose{% endif %}">
     {{ content }}
   </div>
 </article>

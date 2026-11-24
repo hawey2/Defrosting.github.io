@@ -1,18 +1,21 @@
 <footer class="site-footer">
-  <div class="wrap footer-inner">
-    <div>
-      <p class="footer-title">{{ site.title }}</p>
-      <p class="muted">{{ site.tagline }}</p>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-title">{{ site.title }}</p>
+        <p class="muted">{{ site.tagline }}</p>
+      </div>
+      <ul class="footer-links">
+        {% if site.author.github != "" %}<li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>{% endif %}
+        {% if site.author.linkedin != "" %}<li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a></li>{% endif %}
+        {% if site.author.orcid != "" %}<li><a href="https://orcid.org/{{ site.author.orcid }}">ORCID</a></li>{% endif %}
+        {% if site.author.email != "" %}<li><a href="mailto:{{ site.author.email }}">Email</a></li>{% endif %}
+        <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
+      </ul>
     </div>
-    <ul class="footer-links">
-      {% if site.author.github != "" %}<li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>{% endif %}
-      {% if site.author.linkedin != "" %}<li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a></li>{% endif %}
-      {% if site.author.orcid != "" %}<li><a href="https://orcid.org/{{ site.author.orcid }}">ORCID</a></li>{% endif %}
-      {% if site.author.email != "" %}<li><a href="mailto:{{ site.author.email }}">Email</a></li>{% endif %}
-      <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
-    </ul>
-  </div>
-  <div class="wrap footer-note muted">
-    © {{ 'now' | date: '%Y' }} {{ site.author.name }} · Nội dung mang tính chia sẻ kiến thức, không thay thế tư vấn y khoa.
+    <div class="footer-note muted">
+      <span>© {{ 'now' | date: '%Y' }} {{ site.author.name }}</span>
+      <span>Nội dung chia sẻ kiến thức, không thay thế tư vấn y khoa.</span>
+    </div>
   </div>
 </footer>

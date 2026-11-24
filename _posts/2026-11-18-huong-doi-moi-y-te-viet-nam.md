@@ -2,8 +2,8 @@
 title: "Đổi mới y tế Việt Nam: bắt đầu từ dữ liệu, không phải từ thuật toán"
 description: "Vì sao một mô hình AI giỏi vẫn có thể thất bại trong bệnh viện, và bốn lớp nền tảng cần xây trước."
 tags: [Đổi mới, Chính sách, Dữ liệu, Việt Nam]
-cover: /assets/images/posts/doi-moi-y-te/cover.svg
-cover_caption: "Mỗi ô vuông là một mảnh dữ liệu nằm rời rạc — đổi mới là làm chúng nói chuyện được với nhau."
+cover: /assets/images/posts/doi-moi-y-te/cover-silk.svg
+cover_caption: "Tranh lụa minh hoạ: một con thuyền nhỏ giữa dòng sông nhiều nhánh, như dữ liệu đi tìm đường liên thông."
 references:
   - "Bộ Y tế (2018). *Thông tư 46/2018/TT-BYT quy định hồ sơ bệnh án điện tử.*"
   - "HL7 International. *FHIR — Fast Healthcare Interoperability Resources.* https://hl7.org/fhir/"

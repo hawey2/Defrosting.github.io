@@ -3,25 +3,38 @@ layout: default
 ---
 <article class="project">
   <header class="post-hero wrap">
-    <p class="kicker">Portfolio{% if page.year %} · {{ page.year }}{% endif %}{% if page.role %} · {{ page.role }}{% endif %}</p>
-    <h1>{{ page.title }}</h1>
-    {% if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
-    {% if page.tools %}<ul class="tag-list">{% for t in page.tools %}<li><span>{{ t }}</span></li>{% endfor %}</ul>{% endif %}
+    <div class="post-hero-side">
+      <span class="entry-year">{{ page.year }}</span>
+      {% include seal.html text='DỰ ÁN' %}
+    </div>
+    <div>
+      <p class="entry-meta label">
+        {% if page.role %}<span>{{ page.role }}</span>{% endif %}
+        {% if page.place %}<span>{{ page.place }}</span>{% endif %}
+        {% if page.tools %}<span>{{ page.tools | join: ', ' }}</span>{% endif %}
+      </p>
+      <h1>“{{ page.title }}”</h1>
+      {% if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
+    </div>
   </header>
   {% if page.cover %}
-  <figure class="figure figure--full post-cover">
+  <figure class="figure post-cover wrap">
     <img src="{{ page.cover | relative_url }}" alt="{{ page.title | escape }}">
   </figure>
   {% endif %}
-  <div class="wrap narrow prose post-content">
-    {{ content }}
-    {% if page.gallery %}
-    <h2 id="thu-vien-anh">Thư viện ảnh</h2>
-    {% include gallery.html images=page.gallery %}
-    {% endif %}
-    {% if page.links %}
-    <p class="project-links">{% for l in page.links %}<a class="btn" href="{{ l.url }}">{{ l.label }} ↗</a>{% endfor %}</p>
-    {% endif %}
-    <p><a href="{{ '/portfolio/' | relative_url }}">← Tất cả dự án</a></p>
+  <div class="post-grid wrap">
+    <div></div>
+    <div class="prose post-content">
+      {{ content }}
+      {% if page.gallery %}
+      <h2 id="thu-vien-anh">Thư viện ảnh</h2>
+      {% include gallery.html images=page.gallery %}
+      {% endif %}
+      {% if page.links %}
+      <p class="project-links">{% for l in page.links %}<a class="btn" href="{{ l.url }}">{{ l.label }} ↗</a>{% endfor %}</p>
+      {% endif %}
+      {% include brush.html %}
+      <p><a class="link-arrow" href="{{ '/portfolio/' | relative_url }}">← Tất cả dự án</a></p>
+    </div>
   </div>
 </article>

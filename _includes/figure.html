@@ -6,9 +6,9 @@
 <figure class="figure {% if include.size %}figure--{{ include.size }}{% endif %}">
   <img src="{{ include.src | relative_url }}" alt="{{ include.alt | default: include.caption | strip_html | escape }}" loading="lazy" decoding="async">
   {%- if include.caption or include.credit -%}
-  <figcaption>
+  <figcaption><span class="fig-text">
     {{ include.caption | markdownify | remove: '<p>' | remove: '</p>' }}
     {%- if include.credit %} <span class="credit">Nguồn: {{ include.credit | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>{% endif -%}
-  </figcaption>
+  </span></figcaption>
   {%- endif -%}
 </figure>

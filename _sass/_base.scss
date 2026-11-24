@@ -1,0 +1,42 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; min-height: 100vh;
+  background: var(--paper); color: var(--ink);
+  font: 300 1.0625rem/1.8 var(--sans);
+  text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
+}
+strong, b { font-weight: 500; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--link); text-underline-offset: .22em; text-decoration-thickness: 1px; transition: color .2s var(--ease); }
+a:hover { color: var(--warm); }
+:focus-visible { outline: 2px solid var(--warm); outline-offset: 3px; }
+::selection { background: var(--warm-soft); }
+.skip-link { position: absolute; left: -999px; top: 0; }
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 99; background: var(--paper); padding: .5rem 1rem; border: 1px solid var(--ink); }
+
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 300; line-height: 1.15; letter-spacing: -.015em; color: var(--ink); font-variation-settings: "opsz" 96; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); margin: 0 0 .4em; }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); margin: 2.4em 0 .6em; }
+h3 { font-size: 1.3rem; font-weight: 400; margin: 2em 0 .5em; }
+
+.wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
+.narrow { max-width: var(--measure); }
+.muted { color: var(--muted); }
+.label, .kicker { @include label; color: var(--muted); margin: 0; }
+.kicker { color: var(--thaw); }
+.lead { font-size: 1.2rem; line-height: 1.7; color: var(--ink-2); max-width: 56ch; margin: 0; }
+
+.btn {
+  @include label; display: inline-flex; align-items: center; gap: .6em;
+  padding: 14px 22px; border: 1px solid var(--ink); color: var(--ink); text-decoration: none;
+  background: transparent; transition: background .3s var(--ease), color .3s var(--ease);
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.link-arrow { @include label; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+.link-arrow:hover { border-color: var(--warm); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
