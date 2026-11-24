@@ -1,0 +1,14 @@
+// ─── Xem ảnh lớn ──────────────────────────────────────────────
+.lightbox { position: fixed; inset: 0; z-index: 100; background: color-mix(in srgb, var(--paper) 97%, transparent); display: flex; flex-direction: column; animation: lb-in .4s var(--ease); }
+@keyframes lb-in { from { opacity: 0; } }
+.lightbox[hidden] { display: none; }
+.lightbox-stage { flex: 1; overflow: auto; display: grid; place-items: center; cursor: zoom-in; overscroll-behavior: contain; padding: var(--s6); }
+.lightbox-img { max-width: 100%; max-height: calc(100vh - 120px); object-fit: contain; box-shadow: 0 30px 60px -30px rgba(28, 37, 48, .4); }
+.lightbox.zoomed .lightbox-stage { place-items: start; cursor: zoom-out; }
+.lightbox.zoomed .lightbox-img { max-width: none; max-height: none; }
+.lightbox-bar { display: flex; align-items: center; gap: var(--s6); padding: var(--s4) var(--gutter); border-top: 1px solid var(--line); color: var(--ink-2); font-size: .86rem; }
+.lightbox-caption { flex: 1; margin: 0; }
+.lightbox-actions { display: flex; gap: var(--s2); }
+.lightbox-actions button, .lightbox-actions a { background: none; color: var(--ink); border: 1px solid var(--line); width: 40px; height: 40px; cursor: pointer; display: grid; place-items: center; text-decoration: none; font-size: .95rem; }
+.lightbox-actions button:hover, .lightbox-actions a:hover { border-color: var(--ink); }
+body.lb-open { overflow: hidden; }

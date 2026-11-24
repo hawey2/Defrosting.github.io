@@ -2,20 +2,14 @@
 layout: page
 title: Bài viết
 kicker: Lưu trữ
-lead: Tất cả bài viết, sắp xếp theo thời gian.
+seal: BÀI VIẾT
+lead: Những ghi chép dài, mỗi bài một khái niệm được rã đông.
+wide: true
 ---
 {% assign by_year = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
 {% for y in by_year %}
-<section class="archive-year">
-  <h2>{{ y.name }}</h2>
-  <ul class="archive-list">
-    {% for post in y.items %}
-    <li>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d.%m' }}</time>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      {% if post.tags.size > 0 %}<span class="muted">{{ post.tags | join: ' · ' }}</span>{% endif %}
-    </li>
-    {% endfor %}
-  </ul>
-</section>
+<p class="year-label">{{ y.name }}</p>
+<ul class="post-list">
+  {% for post in y.items %}{% include post-row.html post=post %}{% endfor %}
+</ul>
 {% endfor %}

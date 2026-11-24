@@ -2,6 +2,7 @@
 layout: page
 title: Giới thiệu
 kicker: Về Defrosting
+seal: TIỂU SỬ
 lead: "Defrosting — rã đông. Mỗi bài viết là một lần làm tan một khái niệm khó, cho tới khi nó đủ mềm để hiểu và dùng được."
 ---
 

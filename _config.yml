@@ -19,10 +19,11 @@ author:
   orcid: ""                                        # ✏️ ví dụ: 0000-0000-0000-0000
 lang: vi
 
-# Địa chỉ trang. Workflow GitHub Actions tự điền baseurl khi build,
+# Địa chỉ trang (repo hawey2/Defrosting.github.io → hawey2.github.io/Defrosting.github.io/).
+# Nếu đổi tên repo thành hawey2.github.io, đặt baseurl: "". Workflow GitHub Actions tự điền baseurl khi build,
 # giá trị dưới đây dùng khi chạy thử trên máy.
 url: "https://hawey2.github.io"
-baseurl: "/Defrosting"
+baseurl: "/Defrosting.github.io"
 
 permalink: /:year/:month/:title/
 timezone: Asia/Ho_Chi_Minh

@@ -1,0 +1,24 @@
+{%- comment -%} Một dự án trong danh mục, theo kiểu sổ triển lãm. {%- endcomment -%}
+{%- assign e = include.item -%}
+<article class="entry reveal">
+  <div class="entry-year">{{ e.year }}</div>
+  <div>
+    <header class="entry-head">
+      <div>
+        <h3 class="entry-title"><a href="{{ e.url | relative_url }}">“{{ e.title }}”</a></h3>
+        <p class="entry-meta label">
+          {% if e.role %}<span>{{ e.role }}</span>{% endif %}
+          {% if e.place %}<span>{{ e.place }}</span>{% endif %}
+          {% if e.tools %}<span>{{ e.tools | join: ', ' }}</span>{% endif %}
+        </p>
+      </div>
+      <p class="entry-desc">{{ e.description }}<br><a class="link-arrow" href="{{ e.url | relative_url }}">Xem dự án →</a></p>
+    </header>
+    <a class="strip" href="{{ e.url | relative_url }}" tabindex="-1" aria-hidden="true">
+      <span class="mount bleed"><img src="{{ e.cover | relative_url }}" alt="" loading="lazy" decoding="async"></span>
+      {%- for g in e.gallery limit: 2 -%}
+      <span class="mount bleed"><img src="{{ g.src | relative_url }}" alt="" loading="lazy" decoding="async"></span>
+      {%- endfor -%}
+    </a>
+  </div>
+</article>

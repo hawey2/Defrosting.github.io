@@ -1,0 +1,46 @@
+// ─── Design tokens ────────────────────────────────────────────
+// Màu & font giữ nguyên từ bản đầu. Mọi phần khác chỉ dùng biến ở đây.
+:root {
+  // Lụa & mực
+  --paper: #f7f4ee;      // nền lụa
+  --paper-2: #efeae1;    // lụa đậm hơn (viền bồi tranh)
+  --card: #fbf8f2;
+  --ink: #1c2530;        // mực
+  --ink-2: #4a5663;
+  --muted: #76808a;
+  --line: #ddd5c7;
+  // Màu nước
+  --frost: #5b8fb5;  --frost-soft: #dbe9f2;
+  --thaw: #2f8079;
+  --warm: #c4643a;   --warm-soft: #f6e2d6;   // cũng là màu ấn son
+  --link: #2a6d8f;
+  // Chữ
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  // Nhịp & bố cục
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s6: 24px; --s8: 32px; --s12: 48px; --s16: 64px; --s24: 96px; --s32: 128px;
+  --measure: 66ch;
+  --wrap: 1240px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --header-h: 72px;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  // Lụa
+  --wash-opacity: .55;
+  --weave-opacity: 1;
+  --blend: multiply;
+}
+
+@mixin dark {
+  --paper: #11161c; --paper-2: #171e26; --card: #151b22;
+  --ink: #e8edf1; --ink-2: #b9c3cc; --muted: #8794a0; --line: #2a3440;
+  --frost: #8fb9d8; --frost-soft: #1d2d3b; --thaw: #6cc0b6;
+  --warm: #e58c63; --warm-soft: #3a261d; --link: #8fc3e0;
+  --wash-opacity: .22; --weave-opacity: .35; --blend: normal;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { @include dark; } }
+:root[data-theme="dark"] { @include dark; }
+
+@mixin label { font: 500 11px/1.4 var(--sans); letter-spacing: .18em; text-transform: uppercase; }
+@mixin phone { @media (max-width: 760px) { @content; } }
+@mixin tablet { @media (max-width: 1040px) { @content; } }

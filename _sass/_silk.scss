@@ -1,0 +1,56 @@
+// ─── Chất liệu tranh lụa ──────────────────────────────────────
+// 1. Thớ lụa: lưới sợi rất mảnh phủ toàn trang.
+// 2. Mảng màu nước loang (wash) mờ, trôi chậm phía sau nội dung.
+// 3. Ấn son (seal), nét bút lông, khung bồi tranh.
+
+body::before, body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1; }
+body::before {
+  opacity: var(--weave-opacity);
+  background:
+    repeating-linear-gradient(0deg, rgba(110, 90, 60, .026) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(110, 90, 60, .02) 0 1px, transparent 1px 4px);
+}
+body::after {
+  opacity: var(--wash-opacity);
+  mix-blend-mode: var(--blend);
+  background:
+    radial-gradient(38% 30% at 8% 6%, var(--frost-soft), transparent 70%),
+    radial-gradient(30% 26% at 96% 18%, var(--warm-soft), transparent 70%),
+    radial-gradient(40% 30% at 85% 96%, color-mix(in srgb, var(--thaw) 18%, transparent), transparent 70%);
+  filter: blur(8px);
+  animation: wash-drift 40s ease-in-out infinite alternate;
+}
+@keyframes wash-drift { to { transform: translate3d(-2%, 1.5%, 0) scale(1.04); } }
+
+// Ấn son — con dấu đỏ chữ dọc
+.seal {
+  display: inline-grid; place-items: center; writing-mode: vertical-rl;
+  min-width: 26px; padding: 6px 3px; border-radius: 2px;
+  background: var(--warm); color: var(--paper);
+  font: 500 10px/1.1 var(--serif); letter-spacing: .12em;
+  transform: rotate(-3deg);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--paper) 25%, transparent);
+  filter: url(#ink-edge);
+}
+
+// Nét bút lông làm vạch ngăn
+.brush { display: block; width: min(320px, 60%); height: 18px; color: var(--ink); opacity: .55; margin: var(--s12) 0; }
+.brush--center { margin-inline: auto; }
+
+// Khung bồi tranh: ảnh đặt trên nền lụa có viền mảnh
+.mount {
+  position: relative; display: block; padding: clamp(8px, 1.2vw, 14px);
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 18px 40px -30px rgba(28, 37, 48, .35);
+}
+.mount img { width: 100%; mix-blend-mode: var(--blend); }
+
+// Ảnh "hiện dần" như màu thấm vào lụa
+.bleed img { filter: saturate(.78) contrast(.96); opacity: .92; transition: filter .9s var(--ease), opacity .9s var(--ease), transform 1.2s var(--ease); }
+.bleed:hover img, .bleed:focus-within img { filter: none; opacity: 1; transform: scale(1.015); }
+
+// Hiện dần khi cuộn tới
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease); }
+.reveal.is-in { opacity: 1; transform: none; }
+.no-js .reveal { opacity: 1; transform: none; }
